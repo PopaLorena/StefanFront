@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { EmployeeGet } from 'src/models/employeeGet';
 import { EmployeeSave } from 'src/models/employeeSave';
 import { EmployeeUpdate } from 'src/models/employeeUpdate';
+import { CarsUpdate } from 'src/models/carsUpdate';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +29,11 @@ export class EmployeeService {
   }
 
   deleteEmployee(employeeId: number): Observable<null>{
-    return this.httpClient.delete(this.baseUrl + '/delete/' + employeeId, {Headers: this.header}) as unknown as Observable<null>;
+    return this.httpClient.delete(this.baseUrl + '/delete/' + employeeId, {headers: this.header}) as unknown as Observable<null>;
   }
 
-  updateEmployee(employeeId: number,updateEmployee: EmployeeUpdate): Observable<CarsUpdate>{
-    return this.httpClient.patch(this.baseUrl + '/edit/' + employeeId, updateEmployee, {Headers: this.header}) as Observable<EmployeeUpdate>;
+  updateEmployee(employeeId: number,updateEmployee: EmployeeUpdate): Observable<EmployeeUpdate>{
+    return this.httpClient.patch(this.baseUrl + '/edit/' + employeeId, updateEmployee, {headers: this.header}) as Observable<EmployeeUpdate>;
   }
 
   
