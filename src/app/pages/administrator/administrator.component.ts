@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,25 +10,28 @@ import { EmployeeGet } from 'src/models/employeeGet';
   templateUrl: './administrator.component.html',
   styleUrls: ['./administrator.component.scss']
 })
-export class AdministratorComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<EmployeeGet>;
+export class AdministratorComponent implements AfterViewInit, OnInit {
+  displayedColumns: string[] = ['username', 'startDate', 'endDate', 'fullName','phoneNumber', 'email', 'workingHours', 'role'];
+  dataSource!: MatTableDataSource<EmployeeGet>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   employees!: EmployeeGet[];
 
   constructor(private employeeService: EmployeeService) {
-    // Create 100 users
-    this.getEmployeesList();
+
+  }
+  async ngOnInit(): Promise<void> {
+    await this.getEmployeesList();
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.employees);
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    
+   this.dataSource.paginator = this.paginator;
+   this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
@@ -40,13 +43,18 @@ export class AdministratorComponent implements AfterViewInit {
     }
   }
 
-
-  getEmployeesList(): void {
-    this.employeeService.getEmployee().subscribe((list: EmployeeGet[]) => {
+  async getEmployeesList(): Promise<void> {
+     (await this.employeeService.getEmployee()).subscribe((list: EmployeeGet[]) => {
       this.employees = list;
+      this.updateTable();
+      console.log(list);
     }, (err) => {
       if (err.status === 401)
         return;
     });
+  }
+
+  updateTable(): void {
+    this.dataSource = new MatTableDataSource<EmployeeGet>(this.employees);
   }
 }

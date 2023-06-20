@@ -12,12 +12,19 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './pages/header/header.component';
+import { HttpClientModule} from '@angular/common/http';
+import { ViewCarsComponent } from './pages/view-cars/view-cars.component';
+import { ViewRepairComponent } from './pages/view-repair/view-repair.component';
+import { ViewCurseComponent } from './pages/view-curse/view-curse.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdministratorComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ViewCarsComponent,
+    ViewRepairComponent,
+    ViewCurseComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import { HeaderComponent } from './pages/header/header.component';
     MatInputModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

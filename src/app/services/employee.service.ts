@@ -14,9 +14,9 @@ export class EmployeeService {
   token = localStorage.getItem('jwt');
   header = { Authorization: `Bearer ${this.token}` };
   constructor(private httpClient: HttpClient) { }
-  readonly baseUrl = "https://localhost:44321/api/employee";
+  readonly baseUrl = "https://localhost:44395/Employee";
 
-  getEmployee(): Observable<EmployeeGet[]>{
+  async getEmployee(): Promise<Observable<EmployeeGet[]>>{
     return this.httpClient.get(this.baseUrl + '/get') as Observable<EmployeeGet[]>;
   }
 

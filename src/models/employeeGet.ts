@@ -1,7 +1,7 @@
 export class EmployeeGet{
     constructor(
         public employeeId?: number,
-        public userName?: string,
+        public username?: string,
         public startDate?: Date,
         public fullName?: string,
         public endDate?: Date,
