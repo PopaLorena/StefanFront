@@ -13,7 +13,7 @@ export class RepairsService {
   token = localStorage.getItem('jwt');
   header = { Authorization: `Bearer ${this.token}` };
   constructor(private httpClient: HttpClient) { }
-  readonly baseUrl = "https://localhost:44321/api/repairs";
+  readonly baseUrl = "https://localhost:44395/api/Repairs";
 
   getRepairs(): Observable<RepairsGet[]>{
     return this.httpClient.get(this.baseUrl + '/get') as Observable<RepairsGet[]>;

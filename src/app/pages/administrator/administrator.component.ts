@@ -4,6 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { EmployeeGet } from 'src/models/employeeGet';
+import { MatDialog } from '@angular/material/dialog';
+import { FormEmployeeComponent } from './form-employee/form-employee.component';
+import { CreateformEmployeeComponent } from './createform-employee/createform-employee.component';
 
 @Component({
   selector: 'app-administrator',
@@ -11,14 +14,14 @@ import { EmployeeGet } from 'src/models/employeeGet';
   styleUrls: ['./administrator.component.scss']
 })
 export class AdministratorComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['username', 'startDate', 'endDate', 'fullName','phoneNumber', 'email', 'workingHours', 'role'];
+  displayedColumns: string[] = ['username', 'startDate', 'endDate', 'fullName','phoneNumber', 'email', 'workingHours', 'role', 'edit'];
   dataSource!: MatTableDataSource<EmployeeGet>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   employees!: EmployeeGet[];
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(public dialog: MatDialog, private employeeService: EmployeeService) {
 
   }
   async ngOnInit(): Promise<void> {
@@ -57,4 +60,39 @@ export class AdministratorComponent implements AfterViewInit, OnInit {
   updateTable(): void {
     this.dataSource = new MatTableDataSource<EmployeeGet>(this.employees);
   }
+  
+  isAdmin():Boolean{
+      return true;
+  }
+
+  delete(id: number | undefined): void {
+    this.employeeService.deleteEmployee(id!).subscribe(
+      () => {
+
+        window.location.reload();
+      }, (err) => {
+      }
+    );
+  }
+
+  async openCreateDialog() {
+    const dialogRef = this.dialog.open(CreateformEmployeeComponent, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+  };
+
+  async openEditDialog(id: number) {
+    const dialogRef = this.dialog.open(FormEmployeeComponent, {
+      width: '250px',
+      data: { idToBeEdit: id },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+  };
 }

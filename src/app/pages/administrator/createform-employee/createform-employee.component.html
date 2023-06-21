@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>hh</h1>
+<div class="form" [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>userName</mat-label>
+        <input matInput type="text" formControlName="userName" placeholder="userName">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>password</mat-label>
+        <input matInput type="text" formControlName="password" placeholder="password">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>startDate</mat-label>
+        <input matInput type="text" formControlName="startDate" placeholder="startDate">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>fullName</mat-label>
+        <input matInput type="text" formControlName="fullName" placeholder="fullName">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>phoneNumber</mat-label>
+        <input matInput type="text" formControlName="phoneNumber" placeholder="phoneNumber">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>role</mat-label>
+        <input matInput type="text" formControlName="role" placeholder="role">
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="saveNewItem()">save</button>
+</div>

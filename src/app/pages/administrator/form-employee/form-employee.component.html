@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>hh</h1>
+<div class="form" [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" placeholder="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>endDate</mat-label>
+        <input matInput type="text" formControlName="endDate" placeholder="endDate">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>phoneNumber</mat-label>
+        <input matInput type="text" formControlName="phoneNumber" placeholder="phoneNumber">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>workedDaysPerMonth</mat-label>
+        <input matInput type="text" formControlName="workedDaysPerMonth" placeholder="workedDaysPerMonth">
+    </mat-form-field>
+    <button mat-raised-button color="accent" (click)="saveNewItem()">save</button>
+</div>

@@ -25,7 +25,7 @@ export class EmployeeService {
   }
 
   saveEmployee(newEmployee: EmployeeSave): Observable<EmployeeSave>{
-    return this.httpClient.post(this.baseUrl + '/post', newEmployee, {headers: this.header}) as Observable<EmployeeSave>;
+    return this.httpClient.post(this.baseUrl + '/create', newEmployee, {headers: this.header}) as Observable<EmployeeSave>;
   }
 
   deleteEmployee(employeeId: number): Observable<null>{

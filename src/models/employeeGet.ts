@@ -7,7 +7,7 @@ export class EmployeeGet{
         public endDate?: Date,
         public phoneNumber?: string,
         public email?: string,
-        public workingHours?: number,
+        public workedDaysPerMonth?: number,
         public role?: string
     ){}
 }

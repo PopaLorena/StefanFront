@@ -16,6 +16,11 @@ import { HttpClientModule} from '@angular/common/http';
 import { ViewCarsComponent } from './pages/view-cars/view-cars.component';
 import { ViewRepairComponent } from './pages/view-repair/view-repair.component';
 import { ViewCurseComponent } from './pages/view-curse/view-curse.component';
+import { FormEmployeeComponent } from './pages/administrator/form-employee/form-employee.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateformEmployeeComponent } from './pages/administrator/createform-employee/createform-employee.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +29,14 @@ import { ViewCurseComponent } from './pages/view-curse/view-curse.component';
     HeaderComponent,
     ViewCarsComponent,
     ViewRepairComponent,
-    ViewCurseComponent
+    ViewCurseComponent,
+    FormEmployeeComponent,
+    CreateformEmployeeComponent
   ],
   imports: [
+    FormsModule,
+    MatDialogModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
