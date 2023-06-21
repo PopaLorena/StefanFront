@@ -28,10 +28,10 @@ export class CarsService {
   }
 
   deleteCars(carId: number): Observable<null>{
-    return this.httpClient.delete(this.baseUrl + '/delete/' + carId, {Headers: this.header}) as unknown as Observable<null>;
+    return this.httpClient.delete(this.baseUrl + '/delete/' + carId, {headers: this.header}) as unknown as Observable<null>;
   }
 
   updateCars(carId: number,updateCars: CarsUpdate): Observable<CarsUpdate>{
-    return this.httpClient.patch(this.baseUrl + '/edit/' + carId, updateCars, {Headers: this.header}) as Observable<CarsUpdate>;
+    return this.httpClient.patch(this.baseUrl + '/edit/' + carId, updateCars, {headers: this.header}) as Observable<CarsUpdate>;
   }
 }

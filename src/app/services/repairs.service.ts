@@ -32,10 +32,10 @@ export class RepairsService {
   }
 
   deleteRepairs(repairId: number): Observable<null>{
-    return this.httpClient.delete(this.baseUrl + '/delete/' + repairId, {Headers: this.header}) as unknown as Observable<null>;
+    return this.httpClient.delete(this.baseUrl + '/delete/' + repairId, {headers: this.header}) as unknown as Observable<null>;
   }
 
   updateRepairs(repairId: number,updateRepairs: RepairsUpdate): Observable<RepairsUpdate>{
-    return this.httpClient.patch(this.baseUrl + '/edit/' + repairId, updateRepairs, {Headers: this.header}) as Observable<RepairsUpdate>;
+    return this.httpClient.patch(this.baseUrl + '/edit/' + repairId, updateRepairs, {headers: this.header}) as Observable<RepairsUpdate>;
   }
 }

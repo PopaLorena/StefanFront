@@ -12,7 +12,7 @@ import { CarsGet } from 'src/models/carsGet';
 })
 export class ViewCarsComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['manufacturingDate', 'carType', 'seatsNumber', 'numberPlate', 'kmNumber', 'carHistory'];
-  datasource!: MatTableDataSource<CarsGet>;
+  dataSource!: MatTableDataSource<CarsGet>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -23,20 +23,20 @@ export class ViewCarsComponent implements AfterViewInit, OnInit {
   }
   async ngOnInit(): Promise<void>{
     await this.getCarsList();
-    this.datasource = new MatTableDataSource(this.cars);
+    this.dataSource = new MatTableDataSource(this.cars);
   }
 
   ngAfterViewInit(){
-    this.datasource.paginator = this.paginator;
-    this.datasource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
-    this.datasource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.datasource.paginator){
-      this.datasource.paginator.firstPage();
+    if (this.dataSource.paginator){
+      this.dataSource.paginator.firstPage();
     }
   }
 
@@ -52,6 +52,6 @@ export class ViewCarsComponent implements AfterViewInit, OnInit {
   }
 
   updateTable(): void{
-    this.datasource = new MatTableDataSource<CarsGet>(this.cars);
+    this.dataSource = new MatTableDataSource<CarsGet>(this.cars);
   }
 }

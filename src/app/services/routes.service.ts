@@ -32,10 +32,11 @@ export class RoutesService {
   }
 
   deleteRoutes(routeId: number): Observable<null>{
-    return this.httpClient.delete(this.baseUrl + '/delete/' + routeId, {Headers: this.header}) as unknown as Observable<null>;
+    return this.httpClient.delete(this.baseUrl + '/delete/' + routeId, {headers: this.header}) as unknown as Observable<null>;
   }
 
   updateRoutes(routeId: number,updateRoutes: RoutesUpdate): Observable<RoutesUpdate>{
-    return this.httpClient.patch(this.baseUrl + '/edit/' + routeId, updateRoutes, {Headers: this.header}) as Observable<RoutesUpdate>;
+    return this.httpClient.patch(this.baseUrl + '/edit/' + routeId, updateRoutes, {headers: this.header}) as Observable<RoutesUpdate>;
   }
+  
 }
