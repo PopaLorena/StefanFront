@@ -1,1 +1,73 @@
-<p>view-curse works!</p>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="routeDetails">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> routeDetails </th>
+        <td mat-cell *matCellDef="let row"> {{row.routeDetails}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="executionTime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> executionTime </th>
+        <td mat-cell *matCellDef="let row"> {{row.executionTime | date}} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="collectedMoney">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> collectedMoney </th>
+          <td mat-cell *matCellDef="let row"> {{row.collectedMoney}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="spentMoney">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> spentMoney </th>
+        <td mat-cell *matCellDef="let row"> {{row.spentMoney}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="kmNumber">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> kmNumber </th>
+        <td mat-cell *matCellDef="let row"> {{row.kmNumber}} </td>
+      </ng-container>
+  
+    
+      <ng-container matColumnDef="employeeId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> employeeId </th>
+          <td mat-cell *matCellDef="let row"> {{row.employeeId}} </td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="carId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> carId </th>
+          <td mat-cell *matCellDef="let row"> {{row.carId}} </td>
+        </ng-container>
+  
+
+      <ng-container matColumnDef="routeDeparture">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> routeDeparture </th>
+          <td mat-cell *matCellDef="let row"> {{row.routeDeparture}} </td>
+        </ng-container>
+
+      <ng-container matColumnDef="routeDestination">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> routeDestination </th>
+            <td mat-cell *matCellDef="let row"> {{row.routeDestination}} </td>
+        </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of routes"></mat-paginator>
+  </div>
+  
+  
